@@ -21,9 +21,8 @@ inherit deploy  systemd update-alternatives
 
 DPN = "acpi-tables-load"
 
-ACPI_TABLES ?= "ili9486 spidev1.1"
+ACPI_TABLES ?= "ili9486.asl spidev1.1.asl"
 ACPI_TABLES[doc] = "List of ACPI tables to include with the initrd"
-ACPI_FEATURES_edison ?= "uart_2w spi i2c"
 IASLFLAGS = " \
     ${@bb.utils.contains('ACPI_FEATURES', 'uart_2w', '-DMUX_UART_2WIRE', '', d)} \
     ${@bb.utils.contains('ACPI_FEATURES', 'uart_4w', '-DMUX_UART_4WIRE', '', d)} \
@@ -36,7 +35,7 @@ do_compile() {
 	# Always clean up the existing tables
 	rm -fr ${WORKDIR}/acpi-tables/kernel
 	install -d ${WORKDIR}/acpi-tables/kernel/firmware/acpi
-
+	
 	for table in ${ACPI_TABLES}; do
 		# If relative path is given use sample tables if
 		# available for the machine in question.
