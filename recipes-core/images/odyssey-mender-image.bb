@@ -6,7 +6,6 @@ IMAGE_FEATURES += "splash"
 LICENSE = "MIT"
 
 CONF_VERSION = "1"
-MACHINE = "odyssey-x86"
 MENDER_ARTIFACT_NAME = "release-1"
 INHERIT += "mender-full"
 DISTRO_FEATURES_append = " systemd"
