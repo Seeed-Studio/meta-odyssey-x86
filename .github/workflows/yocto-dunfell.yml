@@ -74,7 +74,7 @@ jobs:
 
             echo "EXTRA_IMAGEDEPENDS_remove = \"qemu-native qemu-helper-native\"" >> conf/local.conf
 
-            MACHINE="odyssey-x86" bitbake core-image-tiny-initramfs
+            MACHINE="odyssey-x86" bitbake core-image-minimal
 
       - name: Check disk usage after build
         run: df -h
