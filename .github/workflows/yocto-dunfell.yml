@@ -65,16 +65,29 @@ jobs:
             git clone -b dunfell git://git.yoctoproject.org/poky mender-seeed/layers/poky
             git clone git://git.yoctoproject.org/meta-intel mender-seeed/layers/meta-intel 
             git clone  https://github.com/Seeed-Studio/meta-odyssey-x86 mender-seeed/layers/meta-odyssey-x86
+            git clone https://github.com/mendersoftware/meta-mender mender-seeed/layers/meta-mender -b dunfell
+            git clone https://github.com/openembedded/meta-openembedded  mender-seeed/layers/meta-openembedded -b dunfell
+
 
             cd mender-seeed
             source layers/poky/oe-init-build-env
 
-            bitbake-layers add-layer ../layers/meta-intel
-            bitbake-layers add-layer ../layers/meta-odyssey-x86
+            # bitbake-layers add-layer  ../layers/poky/meta
+            # bitbake-layers add-layer  ../layers/poky/meta-poky
+            # bitbake-layers add-layer  ../layers/poky/meta-yocto-bsp
+            bitbake-layers add-layer  ../layers/meta-intel
+            bitbake-layers add-layer  ../layers/meta-odyssey-x86
+            bitbake-layers add-layer  ../layers/meta-openembedded/meta-oe
+            bitbake-layers add-layer  ../layers/meta-openembedded/meta-python
+            # bitbake-layers add-layer  ../layers/meta-openembedded/meta-networking
+            bitbake-layers add-layer  ../layers/meta-mender/meta-mender-core
+            bitbake-layers add-layer  ../layers/meta-mender/meta-mender-demo
 
-            echo "EXTRA_IMAGEDEPENDS_remove = \"qemu-native qemu-helper-native\"" >> conf/local.conf
-
-            MACHINE="odyssey-x86" bitbake core-image-minimal
+            MACHINE="odyssey-x86" bitbake odyssey-mender-image
+            # MACHINE="odyssey-x86" bitbake -c compile python3
+            # MACHINE="odyssey-x86" bitbake -c compile qemu-native
+            # MACHINE="odyssey-x86" bitbake -c compile qemu-helper-native
+            # MACHINE="odyssey-x86" bitbake -c compile linux-intel
 
       - name: Check disk usage after build
         run: df -h
@@ -150,6 +163,7 @@ jobs:
         run: |
             cd ${{ github.workspace }}
             cd mender-seeed
+            git clone -b dunfell git://git.yoctoproject.org/poky mender-seeed/layers/poky
             git clone git://git.yoctoproject.org/meta-intel layers/meta-intel 
             git clone https://github.com/mendersoftware/meta-mender layers/meta-mender -b dunfell
             git clone https://github.com/openembedded/meta-openembedded  layers/meta-openembedded -b dunfell
@@ -164,11 +178,10 @@ jobs:
             bitbake-layers add-layer  ../layers/meta-odyssey-x86 
             bitbake-layers add-layer  ../layers/meta-openembedded/meta-oe 
             bitbake-layers add-layer  ../layers/meta-openembedded/meta-python 
-            bitbake-layers add-layer  ../layers/meta-openembedded/meta-networking 
+            #bitbake-layers add-layer  ../layers/meta-openembedded/meta-networking 
             bitbake-layers add-layer  ../layers/meta-mender/meta-mender-core 
             bitbake-layers add-layer  ../layers/meta-mender/meta-mender-demo 
 
-            echo "EXTRA_IMAGEDEPENDS_remove = \"qemu-native qemu-helper-native\"" >> conf/local.conf
 
             MACHINE="odyssey-x86" bitbake odyssey-mender-image
 

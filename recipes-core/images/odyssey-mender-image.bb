@@ -3,6 +3,8 @@ and mender.io cloud."
 
 IMAGE_FEATURES += "splash"
 
+inherit core-image
+
 LICENSE = "MIT"
 
 CONF_VERSION = "1"
@@ -21,7 +23,6 @@ MENDER_IMAGE_BOOTLOADER_FILE = "wic-initrd"
 IMAGE_FEATURES += " \
     ssh-server-openssh \
     "
-CORE_IMAGE_EXTRA_INSTALL += "vim htop acpica acpitool acpi-tables"
+CORE_IMAGE_EXTRA_INSTALL += "acpica acpitool acpi-tables"
 
 
-inherit core-image
