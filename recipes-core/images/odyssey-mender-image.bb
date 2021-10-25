@@ -3,7 +3,7 @@ and mender.io cloud."
 
 IMAGE_FEATURES += "splash"
 
-inherit core-image
+inherit odyssey-image
 
 LICENSE = "MIT"
 
@@ -25,4 +25,4 @@ IMAGE_FEATURES += " \
     "
 CORE_IMAGE_EXTRA_INSTALL += "acpica acpitool acpi-tables"
 
-
+DISTRO_FEATURES_remove = "x11  wayland vulkan pulseaudio nfc  vfat largefile opengl ptest multiarch  gobject-introspection-data"
