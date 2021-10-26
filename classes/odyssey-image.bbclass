@@ -63,7 +63,6 @@ MACHINE_HWCODECS ??= ""
 
 CORE_IMAGE_BASE_INSTALL = '\
     packagegroup-core-boot \
-    packagegroup-base-extended \
     \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     '
