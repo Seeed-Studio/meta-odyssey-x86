@@ -20,6 +20,8 @@ SRC_URI_append = "file://defconfig \
 		  file://can-and-lcd-devices.cfg \
 		"
 
+include ${@mender_feature_is_enabled("mender-client-install","linux-intel-mender.inc","",d)}
+
 # Disable version check so that we don't have to edit this recipe every time
 # upstream bumps the version
 KERNEL_VERSION_SANITY_SKIP = "1"
