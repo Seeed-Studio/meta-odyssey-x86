@@ -83,7 +83,7 @@ jobs:
             bitbake-layers add-layer  ../layers/meta-mender/meta-mender-core
             bitbake-layers add-layer  ../layers/meta-mender/meta-mender-demo
 
-            MACHINE="odyssey-x86" bitbake odyssey-mender-image
+            MACHINE="odyssey-x86-mander" bitbake odyssey-image-base
             # MACHINE="odyssey-x86" bitbake -c compile python3
             # MACHINE="odyssey-x86" bitbake -c compile qemu-native
             # MACHINE="odyssey-x86" bitbake -c compile qemu-helper-native
