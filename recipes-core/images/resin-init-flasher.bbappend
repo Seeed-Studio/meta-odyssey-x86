@@ -1,0 +1,2 @@
+
+INTERNAL_DEVICE_KERNEL = "sda"
