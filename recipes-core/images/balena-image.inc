@@ -2,7 +2,10 @@
 # Genericx86-64
 #
 
+
 IMAGE_FSTYPES_append = " balenaos-img"
+IMAGE_ROOTFS_SIZE="733184"
+BALENA_BOOT_SIZE="80960"
 
 # Do not support live USB stick
 NOISO = "1"
@@ -19,6 +22,7 @@ BALENA_BOOT_PARTITION_FILES = " \
     grub_extraenv:/grub/grub_extraenv \
     grub_extraenv:/EFI/BOOT/grub_extraenv \
     "
+
 
 
 IMAGE_INSTALL_append = " efibootmgr"
