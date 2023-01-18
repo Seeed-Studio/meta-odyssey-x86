@@ -16,9 +16,10 @@ SRC_URI = " \
 #    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;name=machine;branch=${LINUX_X86_BRANCH} \
 #    "
 
-SRC_URI_append = "file://defconfig \
-		  file://can-and-lcd-devices.cfg \
-		"
+SRC_URI_append = " \
+	file://defconfig \
+	file://can-and-lcd-devices.cfg \
+	"
 
 include ${@mender_feature_is_enabled("mender-client-install","linux-intel-mender.inc","",d)}
 
