@@ -3,5 +3,4 @@ and mender.io cloud."
 
 IMAGE_FEATURES += "splash"
 
-
 inherit odyssey-image
