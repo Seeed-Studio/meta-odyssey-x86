@@ -51,7 +51,6 @@ FEATURE_PACKAGES_ssh-server-dropbear = "packagegroup-core-ssh-dropbear"
 FEATURE_PACKAGES_ssh-server-openssh = "packagegroup-core-ssh-openssh"
 FEATURE_PACKAGES_hwcodecs = "${MACHINE_HWCODECS}"
 
-
 # IMAGE_FEATURES_REPLACES_foo = 'bar1 bar2'
 # Including image feature foo would replace the image features bar1 and bar2
 IMAGE_FEATURES_REPLACES_ssh-server-openssh = "ssh-server-dropbear"
@@ -61,11 +60,10 @@ IMAGE_FEATURES_REPLACES_ssh-server-openssh = "ssh-server-dropbear"
 
 MACHINE_HWCODECS ??= ""
 
-CORE_IMAGE_BASE_INSTALL = '\
+CORE_IMAGE_BASE_INSTALL = " \
     packagegroup-core-boot \
-    \
     ${CORE_IMAGE_EXTRA_INSTALL} \
-    '
+"
 
 CORE_IMAGE_EXTRA_INSTALL ?= ""
 

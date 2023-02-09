@@ -1,5 +1,5 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI_append = "file://add_mdev.cfg \
-		"
-
+SRC_URI:append = " \
+    file://add_mdev.cfg \
+"
