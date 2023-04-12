@@ -69,6 +69,8 @@ FILES:${PN} = "/kernel/firmware/acpi"
 FILES:${PN} += "${systemd_unitdir}/system/*"
 FILES:${PN} += "${bindir}/*"
 
+# ensure we deploy microcode.cpio before we try to create wic-initrd
+do_deploy[depends] += "intel-microcode:do_deploy"
 do_deploy() {
     cd ${WORKDIR}/acpi-tables
     find kernel | cpio -H newc -o > ${DEPLOYDIR}/acpi-tables.cpio
